@@ -287,6 +287,9 @@ function! s:create_h1(fname) abort
     " NOTE: it is possible this could remove desired characters if the 'links_space_char'
     " character matches characters that are intentionally used in the title.
     let title = substitute(title, vimwiki#vars#get_wikilocal('links_space_char'), ' ', 'g')
+  else
+    " if it is a diary page then use a custom header.
+    let title = (strftime("%a %d-%m-%Y"))
   endif
 
   " Insert the header
