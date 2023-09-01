@@ -289,7 +289,7 @@ function! s:create_h1(fname) abort
     let title = substitute(title, vimwiki#vars#get_wikilocal('links_space_char'), ' ', 'g')
   else
     " if it is a diary page then use a custom header.
-    let title = (strftime("%a %d-%m-%Y"))
+    let title = strftime('%a %d-%m-%Y', str2nr(strftime('%s', strptime('%Y-%m-%d', split(title, '\.')[0]))))
   endif
 
   " Insert the header
